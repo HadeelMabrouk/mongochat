@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <title>MongoChat</title>
     <style>
+        body{
+            background-image: url(background.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        h1{
+            color:floralwhite;
+        }
         #messages{height:300px;}
         .card{
             overflow-y: scroll;
@@ -31,7 +39,7 @@
                         </div>
                     </div>
                     <br>
-                    <textarea id="textarea" class="form-control" placeholder="Enter message..."></textarea>
+                    <textarea id="textarea" class="form-control" placeholder="Enter the number of the question please..."></textarea>
                     <br>
                 </div>
             </div>
@@ -55,6 +63,31 @@
 
             // Set default status
             var statusDefault = status.textContent;
+
+            var data = [
+                        {name: "10" ,message: "How do I choose a cruise?"},
+                        {name: "9" ,message: "When should I buy my airline ticket? Is there a way to game the system?"},
+                        {name: "8" ,message: "Do I need a passport to travel outside the United States and how do I get one if I do?"},
+                        {name: "7" ,message: "Is travel insurance really necessary?"},
+                        {name: "6" ,message: "Can I obtain my boarding pass before I get to the airport?"},
+                        {name: "5" ,message: "What do I need to avoid packing in my carry-on bag?"},
+                        {name: "4" ,message: "What should I pack in my carryon bag?"},
+                        {name: "3" ,message: "When do I need to be at the airport to check in for my flight?"},
+                        {name: "2" ,message: "Do I need to reconfirm my flights before I leave?"},
+                        {name: "1" ,message: "What kind of documentation do I need to travel?"},
+                        {name: "Travel Agency" ,message: "Welcome to our travel agency! Please, send the number of your question. Here is a list of our supported questions:"}];
+
+                    messages.textContent = '';
+                    if(data.length){
+                        for(var x = 0;x < data.length;x++){
+                            // Build out message div
+                            var message = document.createElement('div');
+                            message.setAttribute('class', 'chat-message');
+                            message.textContent = data[x].name+": "+data[x].message;
+                            messages.appendChild(message);
+                            messages.insertBefore(message, messages.firstChild);
+                        }
+                    }
 
             var setStatus = function(s){
                 // Set status
@@ -120,7 +153,30 @@
 
                 // Clear Message
                 socket.on('cleared', function(){
+                    var data = [
+                        {name: "10" ,message: "How do I choose a cruise?"},
+                        {name: "9" ,message: "When should I buy my airline ticket? Is there a way to game the system?"},
+                        {name: "8" ,message: "Do I need a passport to travel outside the United States and how do I get one if I do?"},
+                        {name: "7" ,message: "Is travel insurance really necessary?"},
+                        {name: "6" ,message: "Can I obtain my boarding pass before I get to the airport?"},
+                        {name: "5" ,message: "What do I need to avoid packing in my carry-on bag?"},
+                        {name: "4" ,message: "What should I pack in my carryon bag?"},
+                        {name: "3" ,message: "When do I need to be at the airport to check in for my flight?"},
+                        {name: "2" ,message: "Do I need to reconfirm my flights before I leave?"},
+                        {name: "1" ,message: "What kind of documentation do I need to travel?"},
+                        {name: "Travel Agency" ,message: "Welcome to our travel agency! Please, send the number of your question. Here is a list of our supported questions:"}];
+
                     messages.textContent = '';
+                    if(data.length){
+                        for(var x = 0;x < data.length;x++){
+                            // Build out message div
+                            var message = document.createElement('div');
+                            message.setAttribute('class', 'chat-message');
+                            message.textContent = data[x].name+": "+data[x].message;
+                            messages.appendChild(message);
+                            messages.insertBefore(message, messages.firstChild);
+                        }
+                    }
                 });
             }
 

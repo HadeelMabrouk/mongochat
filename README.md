@@ -1,9 +1,7 @@
 # MongoChat
 
-Simple chat app that uses MongoDB and Socket.io
+Simple chat app that uses MongoDB and Socket.io to answer user's questions about travel procedures
 
-### Version
-1.0.0
 
 ## Install Dependencies
 ```bash
